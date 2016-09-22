@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LepidopteraNames.Views.TaxonPage"
+             Title="{Binding Taxon.Name}">
+  <ContentPage.ToolbarItems>
+    <ToolbarItem Order="Primary" Text="Stäng" Command="{Binding CloseCommand}"></ToolbarItem>
+  </ContentPage.ToolbarItems>
+  
+  <StackLayout Spacing="0" Padding="0">
+    <StackLayout Orientation="Horizontal" Padding="8,0" Spacing="0">
+      <Button Text="Back" HorizontalOptions="StartAndExpand" Clicked="backClicked" IsEnabled="{Binding CanGoBack}" HeightRequest="35" />
+      <Button Text="Forward" HorizontalOptions="End" Clicked="forwardClicked" IsEnabled="{Binding CanGoForward}"  HeightRequest="35"/>
+    </StackLayout>
+
+    <WebView x:Name="Browser" CanGoBack="{Binding CanGoBack}" CanGoForward="{Binding CanGoForward}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
+  </StackLayout>
+</ContentPage>

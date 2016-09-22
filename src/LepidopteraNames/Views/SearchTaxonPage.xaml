@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:LepidopteraNames.Converters;assembly=LepidopteraNames"
+             x:Class="LepidopteraNames.Views.SearchTaxonPage"
+             x:Name="CurrentPage"
+             Title="Sök">
+
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <converters:DataSourceConverter x:Key="DataSourceConverter"></converters:DataSourceConverter>
+    </ResourceDictionary>
+  </ContentPage.Resources>
+
+  <ContentPage.Padding>
+    <OnPlatform x:TypeArguments="Thickness"
+                iOS="0, 20, 0, 0" />
+  </ContentPage.Padding>  
+  
+  <StackLayout>
+    <SearchBar Text="{Binding SearchText}" Placeholder="Sök" />
+
+    <Label Text="Börja skriva ett artnamn i rutan ovan" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" IsVisible="{Binding Taxons, Converter={StaticResource DataSourceConverter}}" />
+    
+    <ListView ItemsSource="{Binding Taxons}">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <TextCell 
+                  Text="{Binding Name}"
+                  Detail="{Binding ScientificName}"
+                  StyleId="disclosure"
+                  Command="{Binding BindingContext.DetailCommand, Source={x:Reference CurrentPage}}"
+                  CommandParameter="{Binding .}"/>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+  
+  </StackLayout>
+
+</ContentPage>
