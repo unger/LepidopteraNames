@@ -129,9 +129,6 @@
     </InterfaceDefinition>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="HockeyApp.iOS">
-      <HintPath>..\..\Components\hockeyappios-3.8.5.0\lib\ios-unified\HockeyApp.iOS.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -233,12 +230,6 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Icon-Small-50.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <XamarinComponentReference Include="hockeyappios">
-      <Visible>False</Visible>
-      <Version>3.8.5.0</Version>
-    </XamarinComponentReference>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\splash.png" />
